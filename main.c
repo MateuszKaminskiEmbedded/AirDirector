@@ -1,17 +1,15 @@
 /* 
- * File:   main.c
- * Author: Mateusz
+ * File:    main.c
+ * Author:  Mateusz Kaminski
+ * Project: AirDirector
  *
  * Created on 26 listopada 2023, 16:40
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
 
-/*
- * 
- */
-int main(int argc, char** argv) {
+int main(void)
+{
 
     return (EXIT_SUCCESS);
 }
