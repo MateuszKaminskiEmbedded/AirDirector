@@ -3,17 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void delay_us(unsigned int us)
+void delay_ms(unsigned long delay)
 {
-    // Convert microseconds us into how many clock ticks it will take
-	us *= SYS_FREQ / 1000000 / 2; // Core Timer updates every 2 ticks
-       
-    _CP0_SET_COUNT(0); // Set Core Timer count to 0
-    
-    while (us > _CP0_GET_COUNT()); // Wait until Core Timer count reaches the number we calculated earlier
+    register unsigned int startCntms = _CP0_GET_COUNT();
+    register unsigned int waitCntms = delay * ms_SCALE;
+
+    while(_CP0_GET_COUNT() - startCntms < waitCntms );
 }
 
-void delay_ms(int ms)
+
+void delay_us(unsigned long delay)
 {
-    delay_us(ms * 1000);
+    register unsigned int startCnt = _CP0_GET_COUNT();
+    register unsigned int waitCnt = delay * us_SCALE;
+
+    while(_CP0_GET_COUNT() - startCnt < waitCnt );
 }

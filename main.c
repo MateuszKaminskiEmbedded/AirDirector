@@ -44,19 +44,25 @@
 #include "main.h"
 
 void main()
-{
+{   
  /* LEDS */
     TRISDbits.TRISD1 = DIGITAL_OUTPUT; /* LED1 */
     TRISDbits.TRISD2 = DIGITAL_OUTPUT; /* LED2 */
     
+    LATBbits.LATB14 = 0;
+    
+    UART_Init();
+    
     while (1) {
+        //_mon_putc('m');
+        printf("Dziala");
+//        LED_1 = 0;
+//        LED_2 = 1;
+//        delay_ms(300);
         
-        LED_1 = 0;
-        LED_2 = 1;
-        delay_ms(250);
+//        LED_1 = 1;
+//        LED_2 = 0;
+        delay_ms(100);
         
-        LED_1 = 1;
-        LED_2 = 0;
-        delay_ms(250);
     }
 }
