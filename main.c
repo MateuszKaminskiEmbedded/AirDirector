@@ -43,26 +43,29 @@
 
 #include "main.h"
 
+/*******************************************************************************
+ Do zrobienia:
+ * diody LED
+ * uart do logów
+ * piny cyfrowe do stacji pogodowej
+ * piny pomocnicze
+ ******************************************************************************/
+
 void main()
 {   
- /* LEDS */
-    TRISDbits.TRISD1 = DIGITAL_OUTPUT; /* LED1 */
-    TRISDbits.TRISD2 = DIGITAL_OUTPUT; /* LED2 */
+    pinConfig();
     
-    LATBbits.LATB14 = 0;
-    
-    UART_Init();
+    UART_Init(UART_BAUDRATE);
     
     while (1) {
-        //_mon_putc('m');
-        printf("Dziala");
-//        LED_1 = 0;
-//        LED_2 = 1;
-//        delay_ms(300);
+        DEBUG_LOG("main(): DZIALA");
         
-//        LED_1 = 1;
-//        LED_2 = 0;
-        delay_ms(100);
+        STAT_LED_1 = 1;
+        STAT_LED_2 = 1;
+        delay_ms(50);
         
+        STAT_LED_1 = DIGITAL_LOW;
+        STAT_LED_2 = DIGITAL_LOW;
+        delay_ms(50);
     }
 }
