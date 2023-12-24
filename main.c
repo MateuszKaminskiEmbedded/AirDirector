@@ -62,10 +62,10 @@ void main()
         
         STAT_LED_1 = 1;
         STAT_LED_2 = 1;
-        delay_ms(50);
+        delay_ms(500);
         
         STAT_LED_1 = DIGITAL_LOW;
         STAT_LED_2 = DIGITAL_LOW;
-        delay_ms(50);
+        delay_ms(500);
     }
 }
